@@ -1,4 +1,4 @@
-var jsQuestions = [
+var MarvelQuestions = [
     {
       title: "Commonly used data types DO NOT include:",
       choices: ["strings", "booleans", "alerts", "numbers"],

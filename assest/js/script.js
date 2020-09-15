@@ -1,4 +1,4 @@
-// p;ull in page objects
+// pulling all the elements from html
 let highscoreDiv = document.querySelector("#highscore");
 let gameTimerEl = document.querySelector("#gameTimer");
 let quesTimerEl = document.querySelector("#quesTimer");
@@ -6,10 +6,7 @@ let mainEl = document.querySelector("#details");
 let timerTab = document.querySelector("#timers");
 
 
-// let questionEl = document.querySelector("#question")
-// let answersListEl = document.querySelector("#answer-list")
-
-// set global variables - how do we move these into localized
+// globla variables
 var test = false;
 var score = 0;
 var quiz = {};
@@ -23,48 +20,47 @@ var questionDuration = 15;
 var questionSecElapsed = 0;
 var questionInterval;
 
-// draw instruction
+
 init();
 
-// var startButton = document.querySelector("#startQuiz");
 
-// function to display instructions
+
+// instructions
 function init() {
   clearDetails();
   reset();
   // creates Heading element for main page
   let heading = document.createElement("p");
   heading.setAttribute("id", "main-heading");
-  heading.textContent = "This game gives you the opportunity to take a time quiz!";
+  heading.textContent = "Play the game but wacth the timer!!";
 
-  // creates elements with the instructions for the game
+  // creates elements with the instructions
   let instructions = document.createElement("p");
   instructions.setAttribute("id", "instructions");
-  instructions.textContent = " You will have 5 seconds to answer each question. If you answer correctly you will score points. The quicker you answer the more points you will score. If you score incorrectly you will not lose points, but you will be penalized time."; 
+  instructions.textContent = "In this game you need to be FAST! You only have 5 seconds per questions and every time you get a question wrong your timer will decreased by 10 seconds!."; 
 
-  // adding more question - this should move into loop or function
   // creates button to start the game
-  let startJsQuiz = document.createElement("button");
-  startJsQuiz.setAttribute("id", "startJSQuiz");
-  startJsQuiz.setAttribute("class", "btn btn-secondary");
-  startJsQuiz.textContent= "Start Javascript Quiz";
+  let startMarvelQuiz = document.createElement("button");
+  startMarvelQuiz.setAttribute("id", "startMarvelQuiz");
+  startMarvelQuiz.setAttribute("class", "btn btn-secondary");
+  startMarvelQuiz.textContent= "Start MCU Quiz";
 
-  
+  //add buttons to page
 
   mainEl.appendChild(heading);
   mainEl.appendChild(instructions);
-  mainEl.appendChild(startJsQuiz);
+  mainEl.appendChild(startMarvelQuiz);
   
 
-  startJsQuiz.addEventListener("click", function () {
-    quizType = "Java Script";
-    playQuiz(jsQuestions);
+  startMarvelQuiz.addEventListener("click", function () {
+    quizType = "MCU";
+    playQuiz(MarvelQuestions);
   });
 
  
 }
 
-// function to clear details element of all children
+// to clear all elements
 function clearDetails() {
   mainEl.innerHTML = "";
 }
@@ -82,17 +78,17 @@ function reset() {
   questionInterval;
 }
 
-//start game
+//Lest Go!!!!
 function playQuiz(questionSet) {
   if (test) { console.log("--- playQuiz ---"); }
-  // select quiz randomize questions
+  // select Random question
   
   quiz = setUpQuestions(questionSet);
 
   // displays timers
   timerTab.setAttribute("style", "visibility: visible;");
 
-  // Start timers here
+  // Start timer
   gameDuration = quiz.length * 15;
   if (test) { console.log("duration g,q:",gameDuration,questionDuration); }
 
@@ -104,23 +100,21 @@ function playQuiz(questionSet) {
 }
 
 // function to get random question out of array
-function setUpQuestions(arr) {
+function setUpQuestions(array) {
   if (test) {console.log("--- setUpQuestions ---");}
 
   let ranQuest = [];
 
-  for (let i=0; i<arr.length; i++) {
-    ranQuest.push(arr[i]);
+  for (let i=0; i<array.length; i++) {
+    ranQuest.push(array[i]);
   }
   return ranQuest;
 }
 
-// function to redraw screen with  question 
+// function to show new question 
 function presentQuestion() {
   if (test) {console.log("--- presentQuestion ---");}
-  // if (test) {console.log("cur.choices[i] " + cur.choices);}
-
-  //reset time allows to answer question
+ 
   questionSecElapsed = 0;
 
   // checks for no more questions and exits
@@ -129,21 +123,18 @@ function presentQuestion() {
     return;
   }
 
-  // call question timer here
-  // reduceQUiz global
 
-  //sets current object (cur - question) by pulling out of reducedQuiz array leaving the remaining quetions in the array
-  curQuestion = quiz.pop();
+  
+  currentQuestion = quiz.pop();
 
-  //clears html to draw questions
+  //clears html to select questions
   clearDetails();
    
-  // add question to screen
-  //build out display for new item
+ 
   let question = document.createElement("h1");
   // adds data value
-  question.setAttribute("question", curQuestion.title);
-  question.textContent = curQuestion.title;
+  question.setAttribute("question", currentQuestion.title);
+  question.textContent = currentQuestion.title;
   mainEl.appendChild(question)
 
   // create list as container to listen for answers
@@ -152,23 +143,23 @@ function presentQuestion() {
   mainEl.appendChild(choiceBox);
 
   //adds answers to screen
-  for( let i=0; i<curQuestion.choices.length; i++ ) {
+  for( let i=0; i < currentQuestion.choices.length; i++ ) {
     // creates variable for each choice item
     let listChoice = document.createElement("li");
     // adds data value
-    listChoice.setAttribute("choice-value", curQuestion.choices[i]);
+    listChoice.setAttribute("choice-value", currentQuestion.choices[i]);
     listChoice.setAttribute("id","questionNum-"+i);
-    listChoice.textContent = curQuestion.choices[i];
+    listChoice.textContent = currentQuestion.choices[i];
     //add choice to page
     choiceBox.appendChild(listChoice)
   }
 
-  if (test) { console.log("cur", curQuestion);}
+  if (test) { console.log("cur", currentQuestion);}
 
-  // get answer from user
+
   // using the anymous function delays the invocation of the scoreAnswer
   choiceBox.addEventListener("click", function (){
-    scoreAnswer(curQuestion);
+    scoreAnswer(currentQuestion);
   });
   // calls for the next questions
 }
@@ -179,43 +170,44 @@ function scoreAnswer(cur) {
   var e = event.target;
   if ( e.matches("li")) {
     let selectedItem = e.textContent;
-    // if (test) { console.log("check quiz " + quiz.length); }
+    
     if (test) { console.log("selectedItem quiz " + selectedItem); }
-    // if (test) { console.log("selectedItem cur " , cur.answer); }
+   
     if ( selectedItem === cur.answer ) {
-      // if (test) { console.log("correct answer");}
+    
       score += questionDuration - questionSecElapsed;
-      //TODO music 
+    
     } else {
       if (test) { console.log("wrong answer");}
-      //penelty for being wrong
+   
+      // wrong answer
+   
       gameDuration -= 10;
     }
-  if (test) { console.log("sselected ",selectedItem);}
+  if (test) { console.log("selected ",selectedItem);}
     showAnswers(cur);
-    // presentQuestion();
+   
   }
 }
 
-// TODO incomplete does not disply the correct color!!!! arghh
+
 function showAnswers(cur) {
   if (test) { console.log("--- showAnswer ---"); }
-  // if (test) { console.log("sa length",cur.choices.length);}
-  if (test) { console.log("sa qanda",cur);}
-  if (test) { console.log("sselected ",selectedItem);}
+  
+  if (test) { console.log("wakanda",cur);}
+  if (test) { console.log("selected ",selectedItem);}
 
 
   for (let i=0; i<cur.choices.length; i++) {
-    if (test) { console.log("sa in for ",i);}
+    if (test) { console.log("wakanda for ",i);}
 
     let questid = "#questionNum-" + i;
-    // if (test) { console.log("sa qn", questid );}
+    
     let questrow = document.querySelector(questid);
 
-    // if (test) { console.log("questrow",questrow);}
 
-    if (test) { console.log("saf selected" + selectedItem + "<");}
-    if (test) { console.log("saf color test >" +  cur.choices[i] +"<");}
+    if (test) { console.log("wakanda selected" + selectedItem + "<");}
+    if (test) { console.log("wakanda color test >" +  cur.choices[i] +"<");}
 
     if ( cur.choices[i] !== cur.answer ) {
       if (test) { console.log("color test flase");}
@@ -239,11 +231,7 @@ function setGameTime() {
 
 
 function renderTime() {
-  // if (test) { console.log(" --- renderTime --- "); }
-  // if (test) { console.log("gameSecElapsed " + gameSecElapsed); }
-  // if (test) { console.log("gameDuration " + gameDuration); }
-  // if (test) { console.log("questionDuration " + questionDuration); }
-
+  
   gameTimerEl.textContent = gameDuration - gameSecElapsed;
   quesTimerEl.textContent = questionDuration - questionSecElapsed;
 
@@ -287,7 +275,7 @@ function endOfGame() {
 
   let heading = document.createElement("p");
   heading.setAttribute("id", "main-heading");
-  heading.textContent = "GAME OVER - I hope you have enjoyed this";
+  heading.textContent = "GAME OVER - Wakanda Forever";
 
   // creates elements with the instructions for the game
   let instructions = document.createElement("p");
@@ -305,7 +293,7 @@ function endOfGame() {
 
   let initialsLabel = document.createElement("label");
   initialsLabel.setAttribute("for","userInitials");
-  initialsLabel.textContent = "Enter Initials: ";
+  initialsLabel.textContent = "Enter Your SuperHeroe Initials: ";
 
   let initialsInput = document.createElement("input");
   initialsInput.setAttribute("id","userInitials");
@@ -331,7 +319,7 @@ function endOfGame() {
       //create object for this score
       let thisScore = [ { type: quizType, name: initialsInput.value, score: score } ]; 
 
-      //get highscores from memory
+      //get highscores from local storage
       let storedScores = JSON.parse(localStorage.getItem("highScores")); 
       if (test) { console.log("storedScore",storedScores); }
 
@@ -353,23 +341,22 @@ function highScores() {
 
   timerTab.setAttribute("style", "visibility: hidden;");
 
-  //get scores from storage
+  //get scores from local storage
   let storedScores = JSON.parse(localStorage.getItem("highScores")); 
 
   // draw heading
   let heading = document.createElement("h2");
   heading.setAttribute("id", "main-heading");
-  heading.textContent = "Top 5 High Score Hall of Fame";
+  heading.textContent = "The Avengers Score Hall of Fame";
 
   mainEl.appendChild(heading);
 
-  // Render a new li for each score
-  // TODO check for this error 
+
   if ( storedScores !== null ) {
     // sort scores
     storedScores.sort((a,b) => (a.score < b.score) ? 1: -1);
 
-    // sets the number of scores to display to 5 or the number of games played. Which ever is less
+    // sets the number of scores to display to 5 
     let numScores2Display = 5;
     if ( storedScores.length < 5 ) { 
       numScores2Display = storedScores.length; 
@@ -384,12 +371,12 @@ function highScores() {
     }
   } else {
     var p = document.createElement("p");
-    p.textContent =  "Your Initials Here!"
+    p.textContent =  "Your SuperHeroe Initials Here!"
     mainEl.appendChild(p);
   }
 
 
-  // creates button to start the game
+  // creates button to start the game again
   let playAgain = document.createElement("button");
   playAgain.setAttribute("id", "playAgain");
   playAgain.setAttribute("class", "btn btn-secondary");
