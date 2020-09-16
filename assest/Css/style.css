@@ -14,7 +14,7 @@ body {
   }
   
   .navbar {
-    background-color: black;  
+    background-color:rgb(180, 31, 31);  
     color: white;  
     /* pulls everything down to push up against bottom border */
     padding-bottom: 0;
@@ -31,7 +31,7 @@ body {
   #navbar-title {
     padding: 15px;
     font-size: 30px;
-    color: goldenrod 
+    color: white
   }
   
   /* container for nav header */
@@ -48,7 +48,7 @@ body {
   .nav-link:hover {
     /* question how do i impact these values without using important */
     /* background-color: #4Cabc2 !important; */
-    background-color: goldenrod;  
+    background-color: #605e63;  
     /* color: #fff !important; */
     color: white;
   }
@@ -56,13 +56,14 @@ body {
   
   #details {
     /* background-color: #73919b;   */
-    background-color: #000608;  
+    background-color:rgb(180, 31, 31);  
     /* provides spacing between the top and bottom nav bars and the content */
     margin-top: 20px;
     margin-bottom: 80px;
   color: #fff;
     /* provide spaceing around the text */
     padding: 40px;
+    box-shadow: rgb(70, 37, 190); ;
   } 
    
   
@@ -71,7 +72,7 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
-    background-color: #4c09aa;
+    background-color: #605e63;
     color: #fff;
     font-size: 1.5em;
     line-height: 1.5;
@@ -79,7 +80,7 @@ body {
   }
   
   li:hover {
-    background-color: #a58201;
+    background-color: yellow;
   }
   
   #answer-image {
@@ -89,14 +90,14 @@ body {
   }
   
   #startMarvelQuiz{
-      background-color: goldenrod;
+      background-color: #605e63;
       color: white;
    
   }
   
   .footer {
     /* set text properties */
-    background-color: rgb(7, 0, 0);
+    background-color: rgb(180, 31, 31); 
     
     /* sets height of footer*/
     height: 10%;
@@ -113,7 +114,7 @@ body {
     text-align: center;
   
     font-size: 10px;
-    color:goldenrod; 
+    color:white
   }
   
   /* media query for screen size to be applied to center text to switch at same time as navbar */
