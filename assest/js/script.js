@@ -32,12 +32,12 @@ function init() {
   // creates Heading element for main page
   let heading = document.createElement("p");
   heading.setAttribute("id", "main-heading");
-  heading.textContent = "Play the game but wacth the timer!!";
+  heading.textContent = "Are you a true Marvel Fan?";
 
   // creates elements with the instructions
   let instructions = document.createElement("p");
   instructions.setAttribute("id", "instructions");
-  instructions.textContent = "In this game you need to be FAST! You only have 5 seconds per questions and every time you get a question wrong your timer will decreased by 10 seconds!."; 
+  instructions.textContent = "In this game you need to be FAST! You only have 5 seconds per questions, every time you get a question wrong your timer will decrease by 10 seconds!."; 
 
   // creates button to start the game
   let startMarvelQuiz = document.createElement("button");

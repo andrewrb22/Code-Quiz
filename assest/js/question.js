@@ -1,33 +1,33 @@
 var MarvelQuestions = [
     {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      title: "Who is the strongest Avenger? :",
+      choices: ["Iron Man", "Thor", "The Hulk", "Black Panther"],
+      answer: "The Hulk"
     },
     {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      title: "Who is the Leader of the Avengers?",
+      choices: ["Captain America", "Tony Stark", "Spiderman", "Thor"],
+      answer: "Tony Stark"
     },
     {
-      title: "Is JavaScript fun to work with?",
-      choices: ["No", "Sometimes", "What is Javascript", "Not just yes, but HELL YES!"],
-      answer: "Not just yes, but HELL YES!"
+      title: "Who is the leader of S.H.I.E.L.D?",
+      choices: ["Nick Fury", "Bruce Banner", "Black Widow", "loki"],
+      answer: "Nick Fury"
     },
     {
-      title: "DOM is an abreviation for ____",
-      choices: ["Data Object Mode", "Dumb Old Man", "Document Object Model", "Dutle Opo Mipsy"],
-      answer: "Document Object Model"
+      title: "What is the name of Tony Stark’s A.I. assistant?",
+      choices: ["H.O.M.E.R", "J.A.R.V.I.S", "A.L.F.R.E.D", "P.O.P.S"],
+      answer: "J.A.R.V.I.S"
     },
     {
-      title: "JavaScript is Textile Mark Up (TML) version of Java?",
+      title: "Groot has never said anything else apart from the phrase:“I am Groot”",
       choices: ["True", "False"],
       answer: "False"
     },
     {
-      title: "JavaScript is strongly typed language",
+      title: "Black Panther is the king of Wakanda",
       choices: ["True", "False"],
-      answer: "False"
+      answer: "True"
     }
   ];
  
