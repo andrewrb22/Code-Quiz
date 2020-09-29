@@ -10,5 +10,5 @@ Also, on the top left corner of the page,  the High score Hall of Super Heroes w
 ![](https://github.com/andrewrb22/Marvel-TriviaGame/blob/master/assest/images/score.png)
 ![](https://github.com/andrewrb22/Marvel-TriviaGame/blob/master/assest/images/page.png)
 
-** Link to deploy Project**
-
+**Link to Marvel Quiz**
+https://andrewrb22.github.io/Marvel-TriviaGame/
